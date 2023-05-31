@@ -1,0 +1,8 @@
+{
+  "name": "Unislo-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gotdori/Unislo-react.git",
+  "author": "gotdori <kboo333@naver.com>",
+  "license": "MIT"
+}

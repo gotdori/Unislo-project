@@ -1,0 +1,58 @@
+server:
+  port: 9000
+#spring.mustache.suffix=.html
+spring:
+  web:
+    resources:
+      static-locations: META-INF:/resources, classpath:/resources, classpath:/static, classpath:/static/dist, classpath:/templates
+  mvc:
+    view:
+      suffix: .html
+  # Database
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://34.64.175.196:3306/unislo
+    username: user
+    password: 1234
+  # jpa properties
+  # SQL문 정렬하여 출력
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+  logging:
+    level:
+      org.hibernate:
+        type.descriptor.sql: trace #show parameter binding
+        SQL: DEBUG
+# 포스트그레스 로컬 테스트용
+# server:
+#   port: 9000
+# #spring.mustache.suffix=.html
+# spring:
+#   web:
+#     resources:
+#       static-locations: META-INF:/resources, classpath:/resources, classpath:/static, classpath:/static/dist, classpath:/templates
+#   mvc:
+#     view:
+#       suffix: .html
+#   # Database
+#   datasource:
+#     driver-class-name: org.postgresql.Driver
+#     url: jdbc:postgresql://localhost:5432/postgres
+#     username: postgres
+#     password: 1234
+#   # jpa properties
+#   # SQL문 정렬하여 출력
+#   jpa:
+#     hibernate:
+#       ddl-auto: update # When you launch the application for the first time - switch "none" at "create"
+#     show-sql: true
+#     database: postgresql
+#     database-platform: org.hibernate.dialect.PostgreSQLDialect
+#     open-in-view: true
+#     generate-ddl: true
+#   sql:
+#     init:
+#       platform: postgres
