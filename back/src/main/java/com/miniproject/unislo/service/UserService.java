@@ -14,10 +14,12 @@ public class UserService {
     @Autowired
     UserRepository userRepo;
 
-    private void validuteDuplicateUser(UserEntity userEntity) {
+    public String validuteDuplicateUser(UserEntity userEntity) {
         UserEntity findUser = userRepo.findByUserId(userEntity.getUserId());
         if(findUser != null){
-            throw new IllegalAccessError("이미 가입된 회원입니다.");
+            return "impossible";
+        } else{
+            return "possible";
         }
     }
 

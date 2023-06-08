@@ -12,11 +12,6 @@ const nextConfig = {};
 //   },
 // };
 
-// module.exports = {
-//   env: {
-//     SERVER_URL: process.env.SERVER_URL,
-//   },
-// };
 module.exports = nextConfig;
 
 // 스프링부트 컨트롤러에 @CrossOrigin(origins = "http://localhost:3000")를 달아주면 위에 코드 필요 없음
