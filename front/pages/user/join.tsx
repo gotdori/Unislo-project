@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
@@ -74,7 +74,7 @@ export default function join() {
         const data = response.data; // 서버에서 반환된 JSON 데이터
         const result = data.result; // HashMap에서 'result' 키의 값
         if (result === "impossible") {
-          alert("이미 사용 중인 아이디입니다.");
+          setError("이미 사용 중인 아이디입니다.");
         } else if (result === "possible") {
           alert("사용 가능한 아이디입니다.");
           setIsIdReadOnly(true);
@@ -112,6 +112,14 @@ export default function join() {
       isValid = false;
     }
 
+    if (!isIdReadOnly) {
+      setError("아이디 중복 확인을 해주세요.");
+      setTimeout(() => {
+        setError("");
+      }, 5000); // 5초 후에 에러 메시지 초기화
+      return;
+    }
+
     return isValid;
   };
 
@@ -134,7 +142,7 @@ export default function join() {
       axios
         .post(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/join-proc`, userDto)
         .then((response) => {
-          router.push("/user/submit");
+          router.push(`/user/submit?userNm=${userDto.userNm}`);
         })
         .catch((error) => {
           console.error(error.response.data);
